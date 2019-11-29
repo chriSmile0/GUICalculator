@@ -13,21 +13,19 @@ import java.awt.Color;
 
 
 public class Fenetre extends JFrame  {
-	String[] tab_strButtons = {"1","2","3","4","5","6","7","8","9","0",".","=","C","+","-","*","/"};
+	String[] tab_strButtons = {"1","2","3","4","5","6","7","8","9","0",".","=","C","+","-","*","/","B","D","O","H"};
 	JButton[] tabBoutons = new JButton[tab_strButtons.length];
 	private JPanel Calto = new JPanel();
 	private JLabel Ecran = new JLabel();
 	private Dimension dim1 = new Dimension(110,89);
 	private Dimension dim2 = new Dimension(100,70);
-	//private double chiffre;
-	//private boolean clicOp = false;
-	//private boolean update = false;
-	//private String op = "";
+	//private Dimension dim3 = new Dimension(110,89);
+	private boolean upd = false;
 
 	public Fenetre(){
 		
 		this.setTitle("Une premiere Calto");
-		this.setSize(480,480);
+		this.setSize(620,480);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		creationElements();
@@ -39,13 +37,15 @@ public class Fenetre extends JFrame  {
 		Font police = new Font("Arial", Font.BOLD,20);
 		Ecran.setFont(police);
 		Ecran.setHorizontalAlignment(JLabel.RIGHT);
-		Ecran.setPreferredSize(new Dimension(480,40));
+		Ecran.setPreferredSize(new Dimension(620,40));
 		JPanel op = new JPanel();
-		op.setPreferredSize(new Dimension(110,480));
+		op.setPreferredSize(new Dimension(220,480));
 		JPanel chiffre = new JPanel();
 		chiffre.setPreferredSize(new Dimension(350,480));
 		JPanel panelEcran = new JPanel();
-		panelEcran.setPreferredSize(new Dimension(480,60));
+		panelEcran.setPreferredSize(new Dimension(620,60));
+		/*JPanel opBiOcDecHexa = new JPanel();
+		opBiOcDecHexa.setPreferredSize(new Dimension(700,300));*/
 
 		for(int i=0;i<tab_strButtons.length;i++){
 			tabBoutons[i]= new JButton(tab_strButtons[i]);
@@ -81,6 +81,26 @@ public class Fenetre extends JFrame  {
 					tabBoutons[i].addActionListener(new DivListener());
 					op.add(tabBoutons[i]);
 					break;
+				case 17 : 
+					tabBoutons[i].setPreferredSize(dim2);
+					tabBoutons[i].addActionListener(new BinaireListener());
+					op.add(tabBoutons[i]);
+					break;
+				case 18 : 
+					tabBoutons[i].setPreferredSize(dim2);
+					tabBoutons[i].addActionListener(new DecimalListener());
+					op.add(tabBoutons[i]);
+					break;
+				case 19 : 
+					tabBoutons[i].setPreferredSize(dim2);
+					tabBoutons[i].addActionListener(new OctalListener());
+					op.add(tabBoutons[i]);
+					break;
+				case 20 : 
+					tabBoutons[i].setPreferredSize(dim2);
+					tabBoutons[i].addActionListener(new HexaListener());
+					op.add(tabBoutons[i]);
+					break;
 				default :
 					tabBoutons[i].addActionListener(new ChiffreListener());
 					chiffre.add(tabBoutons[i]);
@@ -109,6 +129,7 @@ public class Fenetre extends JFrame  {
 		int result = e.eval();
 		String resulte = String.valueOf(result);
 		Ecran.setText(resulte);
+		upd = true;
 		}
 
 	}
@@ -142,6 +163,54 @@ public class Fenetre extends JFrame  {
 			Ecran.setText("");
 		}
 	}
+
+	class DecimalListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0){
+		String str = Ecran.getText();
+		EXPR e = PARSER.parse_on(str);
+		int result = e.eval();
+		String resulte = Integer.toString(result,10);
+		Ecran.setText(resulte);
+		upd = true;
+		}
+	}
+
+	class BinaireListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0){
+		String str = Ecran.getText();
+		//On reconvertit ce que l'on a reçu en base 10 pour que le parser ne sois pas perdu 
+
+		EXPR e = PARSER.parse_on(str);
+		int result = e.eval();
+		String resulte = Integer.toString(result,2);
+		Ecran.setText(resulte);
+		upd = true;
+		}
+	}
+
+	class OctalListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0){
+		String str = Ecran.getText();
+		EXPR e = PARSER.parse_on(str);
+		int result = e.eval();
+		String resulte = Integer.toString(result,8);
+		Ecran.setText(resulte);
+		upd = true;
+		}
+	}
+	
+	class HexaListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0){
+		String str = Ecran.getText();
+		EXPR e = PARSER.parse_on(str);
+		int result = e.eval();
+		String resulte = Integer.toString(result,16);
+		Ecran.setText(resulte);
+		upd = true;
+		}
+	}
+
+	
 
 
 
