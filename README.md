@@ -19,7 +19,5 @@ Load://########################### 0% #########################//
 Pour le moment on affiche le resultat quand on clique sur les B H et O et on
 
 l'affiche dans la base demandé et cela fait donc aussi le result 
-
 Alors que l'on pourrait tenter de creer de passer en binaire pendant un moment
-
 pour creer des additions binaire et etc...
