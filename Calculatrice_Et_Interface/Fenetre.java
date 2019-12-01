@@ -21,6 +21,7 @@ public class Fenetre extends JFrame  {
 	private Dimension dim2 = new Dimension(100,70);
 	//private Dimension dim3 = new Dimension(110,89);
 	private boolean upd = false;
+	private char mode = 'D';
 
 	public Fenetre(){
 		
@@ -32,6 +33,74 @@ public class Fenetre extends JFrame  {
 		this.setContentPane(Calto);
 		this.setVisible(true);
 	}
+
+	public int bintoDec(String bin){
+        int nb = Integer.parseInt(bin,2);
+        return nb;
+    }
+
+    public  String bintoHex(String bin){
+        int nb = bintoDec(bin);
+        return Integer.toHexString(nb);
+    }
+
+    public  String binToOct(String bin){
+        int nb = bintoDec(bin);
+        return decToOct(nb);
+    }
+
+    public  String dectoBin(int nb){
+        String str = Integer.toBinaryString(nb);
+        return str;
+    }
+
+    public  String decToOct(int dec){
+        return Integer.toOctalString(dec);
+    }
+
+    public  String dectoHex(int dec){
+        return Integer.toHexString(dec);
+    }
+
+    public  String OctoBin(String Oct){
+        int nb = Integer.parseInt(Oct,8);
+        return dectoBin(nb);
+    }
+
+    public  int OcttoDec(String oct){
+        return Integer.parseInt(oct,8);
+    }
+
+    public  String OctToHex(String Oct){
+        int nb = OcttoDec(Oct);
+        return dectoHex(nb);
+    }
+
+    public  String hexToOct(String hex){
+        int nb = hextoDec(hex);
+        return decToOct(nb);
+    }
+
+    public int hextoDec(String hex){
+        int nb = Integer.parseInt(hex,16);
+        return nb;
+    }
+
+    public  String hexToBin(String hex){
+        int nb = Integer.parseInt(hex,16);
+        return dectoBin(nb);
+    }
+
+    public  String intoBinary(String ch){
+        String result="";
+        int i=0;
+        while(i<ch.length()){
+            char c = ch.charAt(i++);
+            result += Integer.toBinaryString((int)c);
+        }
+        return result;
+    }
+
 
 	private void creationElements(){
 		Font police = new Font("Arial", Font.BOLD,20);
@@ -160,16 +229,31 @@ public class Fenetre extends JFrame  {
 
 	class ResetListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
+			mode = 'D';
 			Ecran.setText("");
 		}
 	}
+
+	//Creer un char pour chaque mode qui a était cliquer en dernier 
+	//Sois B sois D sois O sois H 
 
 	class DecimalListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
 		String str = Ecran.getText();
 		EXPR e = PARSER.parse_on(str);
 		int result = e.eval();
-		String resulte = Integer.toString(result,10);
+		String resulte = Integer.toString(result);
+		if(mode=='B'){
+			resulte = Integer.toString(bintoDec(resulte));
+		}
+		else if (mode=='O'){
+			resulte = Integer.toString(OcttoDec(resulte));
+	
+		}
+		else if (mode=='H'){
+			resulte = Integer.toString(hextoDec(resulte));
+		}
+		mode = 'D';
 		Ecran.setText(resulte);
 		upd = true;
 		}
@@ -179,10 +263,21 @@ public class Fenetre extends JFrame  {
 		public void actionPerformed(ActionEvent arg0){
 		String str = Ecran.getText();
 		//On reconvertit ce que l'on a reçu en base 10 pour que le parser ne sois pas perdu 
-
+		
 		EXPR e = PARSER.parse_on(str);
 		int result = e.eval();
-		String resulte = Integer.toString(result,2);
+		int nb;
+		String resulte = Integer.toString(result);
+		if(mode=='D'){
+			resulte = dectoBin(result);
+		}
+		else if (mode=='O'){
+			resulte = OctoBin(resulte);
+		}
+		else if (mode=='H'){
+			resulte = hexToBin(resulte);
+		}
+		mode = 'B';
 		Ecran.setText(resulte);
 		upd = true;
 		}
@@ -193,7 +288,17 @@ public class Fenetre extends JFrame  {
 		String str = Ecran.getText();
 		EXPR e = PARSER.parse_on(str);
 		int result = e.eval();
-		String resulte = Integer.toString(result,8);
+		String resulte = Integer.toString(result);
+		if(mode=='D'){
+			resulte = decToOct(result);
+		}
+		else if (mode=='B'){
+			resulte = binToOct(resulte);
+		}
+		else if (mode=='H'){
+			resulte = hexToOct(resulte);
+		}
+		mode = 'O';
 		Ecran.setText(resulte);
 		upd = true;
 		}
@@ -204,7 +309,17 @@ public class Fenetre extends JFrame  {
 		String str = Ecran.getText();
 		EXPR e = PARSER.parse_on(str);
 		int result = e.eval();
-		String resulte = Integer.toString(result,16);
+		String resulte = Integer.toString(result);
+		if(mode=='D'){
+			resulte = dectoHex(result);
+		}
+		else if (mode=='O'){
+			resulte = OctToHex(resulte);
+		}
+		else if (mode=='B'){
+			resulte = bintoHex(resulte);
+		}
+		mode = 'H';
 		Ecran.setText(resulte);
 		upd = true;
 		}
