@@ -240,9 +240,15 @@ public class Fenetre extends JFrame  {
 	class DecimalListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
 		String str = Ecran.getText();
+		int r = 0;
+		String resulte="";
+		if(mode=='H'){
+			r = hextoDec(str);
+			resulte = Integer.toString(r);
+		}
+		else {
 		EXPR e = PARSER.parse_on(str);
 		double result = e.eval();
-		String resulte;
 		if(mode=='B'){
 			resulte = Integer.toString((int)result);
 			resulte = Integer.toString(bintoDec(resulte));
@@ -252,12 +258,9 @@ public class Fenetre extends JFrame  {
 			resulte = Integer.toString(OcttoDec(resulte));
 	
 		}
-		else if (mode=='H'){
-			resulte = Integer.toString((int)result);
-			resulte = Integer.toString(hextoDec(resulte));
-		}
-		else {
+		else if (mode=='D'){
 			resulte = Double.toString(result);
+			}
 		}
 		mode = 'D';
 		Ecran.setText(resulte);
@@ -269,10 +272,15 @@ public class Fenetre extends JFrame  {
 		public void actionPerformed(ActionEvent arg0){
 		String str = Ecran.getText();
 		//On reconvertit ce que l'on a reçu en base 10 pour que le parser ne sois pas perdu 
-		
+		String resulte="";
+		int r=0;
+		if(mode=='H'){
+			r = hextoDec(str);
+			resulte = dectoBin(r);
+		}
+		else {
 		EXPR e = PARSER.parse_on(str);
 		double result = e.eval();
-		String resulte;
 		if(mode=='D'){
 			//resulte = Integer.toString((int)result);
 			resulte = dectoBin((int)result);
@@ -281,12 +289,9 @@ public class Fenetre extends JFrame  {
 			resulte = Integer.toString((int)result);
 			resulte = OctoBin(resulte);
 		}
-		else if (mode=='H'){
+		else if (mode=='B'){
 			resulte = Integer.toString((int)result);
-			resulte = hexToBin(resulte);
-		}
-		else {
-			resulte = Integer.toString((int)result);
+			}	
 		}
 		mode = 'B';
 		Ecran.setText(resulte);
@@ -297,22 +302,25 @@ public class Fenetre extends JFrame  {
 	class OctalListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
 		String str = Ecran.getText();
-		EXPR e = PARSER.parse_on(str);
-		double result = e.eval();
-		String resulte;
-		if(mode=='D'){
-			resulte = decToOct((int)result);
-		}
-		else if (mode=='B'){
-			resulte = Integer.toString((int)result);
-			resulte = binToOct(resulte);
-		}
-		else if (mode=='H'){
-			resulte = Integer.toString((int)result);
-			resulte = hexToOct(resulte);
+		int r = 0;
+		String resulte="";
+		if(mode=='H'){
+			r = hextoDec(str);
+			resulte = decToOct(r);
 		}
 		else {
-			 resulte = Integer.toString((int)result);
+			EXPR e = PARSER.parse_on(str);
+			double result = e.eval();
+			if(mode=='D'){
+				resulte = decToOct((int)result);
+			}
+			else if (mode=='B'){
+				resulte = Integer.toString((int)result);
+				resulte = binToOct(resulte);
+			}
+			else if(mode=='O'){
+				 resulte = Integer.toString((int)result);
+			}
 		}
 		mode = 'O';
 		Ecran.setText(resulte);
