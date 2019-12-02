@@ -2,7 +2,7 @@ class NEUTRAL extends EXPR_UNARY {
     NEUTRAL(EXPR v){
         this.value = v;
     }
-    int eval()
+    double eval()
     {
         return  value.eval();
     }

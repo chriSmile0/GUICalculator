@@ -5,7 +5,7 @@ public class MUL extends EXPR_BINARY{
 		this.right = r;
 	}
 	
-	int eval() {
+	double eval() {
 		return left.eval() * right.eval();
 	}
 

@@ -1,5 +1,5 @@
 abstract class EXPR {
-	abstract int eval();
+	abstract double eval();
 }
 
 

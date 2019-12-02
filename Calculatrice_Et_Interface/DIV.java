@@ -5,7 +5,7 @@ public class DIV extends EXPR_BINARY{
 		this.right = r;
 	}
 	
-	int eval() {
+	double eval() {
 		if (right.eval() == 0) {
 			return -1;
 		}

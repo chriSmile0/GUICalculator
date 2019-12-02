@@ -4,7 +4,7 @@ class PARSER {
     private static String src;
     private static int idx;
     private static char last_char;
-    private static int last_cst;
+    private static double last_cst;
 
     private static boolean read_char(char c)
     {
@@ -16,6 +16,7 @@ class PARSER {
         return false;
     }
 
+   
     private static boolean read_cst()
     {
         //Indication : '4'-'0' == 4
@@ -24,19 +25,15 @@ class PARSER {
        
         //Conversion d'une chaine de caractere en int
         last_cst = 0;
-        char c = src.charAt(idx);
-        if(((c >= '0') && (c <= '9')) && (idx < src.length())) {
-            for(;((idx < src.length()) && ((src.charAt(idx) >= '0') && (src.charAt(idx) <= '9')));idx++){
-                    last_cst += src.charAt(idx) -'0';
-                    last_cst *= 10;
-                }
-            
-                //On a croiser au moins un chiffre et que là l'indice n'est pas sur un chiffre alors on ne retourne pas dans la boucle
-                last_cst /= 10;
-                return true;
-            
+        int idx_dep = idx;
+        for(;((idx<src.length())&&(((src.charAt(idx)>='0')&&(src.charAt(idx)<='9'))||(src.charAt(idx)=='.')));idx++);
+        
+        String str_sub = src.substring(idx_dep,idx);
+        if(str_sub.length()>0){
+            last_cst = Double.valueOf(str_sub);
+            return true;
         }
-        else return false;   
+        else return false;
     }
 
    

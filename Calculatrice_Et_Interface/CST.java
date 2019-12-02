@@ -1,11 +1,11 @@
 public class CST extends EXPR{
-	int value;
+	double value;
 	
-	CST(int v){
+	CST(double v){
 		this.value = v;
 	}
 	
-	int eval() {
+	double eval() {
 		return value;
 	}
 
