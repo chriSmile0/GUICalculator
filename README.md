@@ -1,4 +1,4 @@
-###############
+
 
 
 
@@ -14,7 +14,10 @@ J'ai le code mais pas encore appliqué pour le meoment
 Load://############################ 100% #######################//
 
 4eme étape : Passer de l'octal en binaire et hexa en binaire et le tout en decimal
-Load://########################### 0% #########################//
+Load://########################### 90% #########################//
+
+
+
 
 Pour le moment on affiche le resultat quand on clique sur les B H et O et on
 l'affiche dans la base demandé et cela fait donc aussi le result 
