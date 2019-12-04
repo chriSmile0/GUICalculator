@@ -498,10 +498,24 @@ public class String_Methods {
         System.out.println(AnyReturnOp(str_op));//Me renvoie bien plus 
 
         String str_oct = "107+107+107";
-        System.out.println(OctStringToDecString(str_oct));//Fonctione très bien 
+        String resulte = "";
+        String chaine_a_parser = OctStringToDecString(str_oct);
+        System.out.println(chaine_a_parser);
+        EXPR e = PARSER.parse_on(chaine_a_parser);
+        double result = e.eval();
+        System.out.println(result);
+        resulte = decToOct((int)result);	
+        System.out.println(resulte);
 
         String str_hexa = "def+fb";
-        System.out.println(HexaStringToDecString(str_hexa));//Fonctionne très bien aussi 
+        resulte = "";
+        chaine_a_parser = HexaStringToDecString(str_hexa);//Fonctionne très bien aussi 
+        System.out.println(chaine_a_parser);
+        e = PARSER.parse_on(chaine_a_parser);
+        result = e.eval();
+        System.out.println(result);
+        resulte = dectoHex((int)result);	
+        System.out.println(resulte);
 
 
     }
