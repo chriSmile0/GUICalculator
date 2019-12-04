@@ -26,7 +26,7 @@ public class Fenetre extends JFrame  {
 	public Fenetre(){
 		
 		this.setTitle("Une premiere Calto");
-		this.setSize(620,480);
+		this.setSize(620,670);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		creationElements();
@@ -110,7 +110,7 @@ public class Fenetre extends JFrame  {
 		JPanel op = new JPanel();
 		op.setPreferredSize(new Dimension(220,480));
 		JPanel chiffre = new JPanel();
-		chiffre.setPreferredSize(new Dimension(350,480));
+		chiffre.setPreferredSize(new Dimension(350,600));
 		JPanel panelEcran = new JPanel();
 		panelEcran.setPreferredSize(new Dimension(620,60));
 		/*JPanel opBiOcDecHexa = new JPanel();
@@ -170,17 +170,6 @@ public class Fenetre extends JFrame  {
 					tabBoutons[i].addActionListener(new HexaListener());
 					op.add(tabBoutons[i]);
 					break;
-				/*case 21 :
-
-				case 22 : 
-
-				case 23 : 
-
-				case 24 : 
-
-				case 25 : 
-
-				case 26 : */
 				default :
 					tabBoutons[i].addActionListener(new ChiffreListener());
 					chiffre.add(tabBoutons[i]);
