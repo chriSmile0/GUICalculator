@@ -354,7 +354,99 @@ public class Fenetre extends JFrame  {
 		}
 	}
 
-	
+
+
+
+
+	//Les nouvelles methodes effectives du fichier 'String_Methods'
+	//Les 4 méthodes suivantes sont un peu obsoletes car remplacer d'une certaine maniere par CharIsPresent
+	/*public static boolean Plus_is_present(String str){
+        boolean a=false;
+        int i =0;
+        for(i=0; ((i<str.length()) && (str.charAt(i)!='+' ));i++);
+
+        if(i!=str.length()) a = true;
+
+        return a;
+    }
+
+    public static boolean Moins_is_present(String str){
+        boolean a=false;
+        int i =0;
+        for(i=0; ((i<str.length()) && (str.charAt(i)!='-' ));i++);
+
+        if(i!=str.length()) a = true;
+
+        return a;
+    }
+
+
+    public static boolean Div_is_present(String str){
+        boolean a=false;
+        int i =0;
+        for(i=0; ((i<str.length()) && (str.charAt(i)!='/' ));i++);
+
+        if(i!=str.length()) a = true;
+
+        return a;
+    }
+
+    public static boolean Mul_is_present(String str){
+        boolean a=false;
+        int i =0;
+        for(i=0; ((i<str.length()) && (str.charAt(i)!='*' ));i++);
+
+        if(i!=str.length()) a = true;
+
+        return a;
+    }*/
+
+    public static boolean CharIsPresent(String str, char c){
+        boolean a=false;
+        int i =0;
+        for(i=0; ((i<str.length()) && (str.charAt(i)!=c ));i++);
+
+        if(i!=str.length()) a = true;
+
+        return a;
+    }
+
+    public static boolean isBin(String str){
+        int i=0;
+        boolean b=true;
+        for(i=0;((i<str.length()) && (str.charAt(i)=='0' || str.charAt(i)=='1'));i++);
+
+        if(i==str.length()) return b;
+
+        else return false;
+        
+    }
+
+    public static boolean isOctal(String str){
+        int i =0;
+        boolean b=true;
+        for(i=0;(i<str.length() && (str.charAt(i)>='0' && str.charAt(i)<'9'));i++);
+
+        if(i==str.length()) return b;
+
+        else return false;
+    }
+
+    public static boolean isDec(String str){
+        return CharIsPresent(str,'.');
+    }
+
+    public static boolean isHex(String str){
+        int i=0;
+        boolean b=true;
+        for(i=0;(i<str.length() && ((str.charAt(i)>='0' && str.charAt(i)<='9') || (str.charAt(i)>='a' && str.charAt(i)<='f')));i++);
+
+        if(i==str.length()) return b;
+
+        else return false;
+	}
+	//Fin des methodes de String_Methods'
+
 
 
 

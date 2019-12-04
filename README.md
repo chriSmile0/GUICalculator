@@ -23,3 +23,8 @@ Pour le moment on affiche le resultat quand on clique sur les B H et O et on
 l'affiche dans la base demandé et cela fait donc aussi le result 
 Alors que l'on pourrait tenter de creer de passer en binaire pendant un moment
 pour creer des additions binaire et etc...
+
+
+
+Voir le fichier 'String_Methods' qui sert de brouillon et qui nous a servit de brouillon pour l'élaboration des fonctions a placer dans le fichier 'Fenetre'
+Il faudrait mettre toutes ses fonctions là dans un package afin de pas inonder le fichier 'Fenetre' mais on va d'abord essayer comme tel dans le fichier 'Fenetre' 
