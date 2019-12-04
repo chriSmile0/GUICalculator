@@ -297,7 +297,7 @@ public class Fenetre extends JFrame  {
 			}
 		}*/
 		mode = 'D';
-		System.out.println(mode);
+		System.out.println("Mode decimal activé");
 		//Ecran.setText(resulte);
 		upd = true;
 		}
@@ -329,7 +329,7 @@ public class Fenetre extends JFrame  {
 			}	
 		}*/
 		mode = 'B';
-		System.out.println(mode);
+		System.out.println("Mode binaire activé");
 		//Ecran.setText(resulte);
 		upd = true;
 		}
@@ -359,7 +359,7 @@ public class Fenetre extends JFrame  {
 			}
 		}*/
 		mode = 'O';
-		System.out.println(mode);
+		System.out.println("Mode octal activé");
 		//Ecran.setText(resulte);
 		upd = true;
 		}
@@ -372,21 +372,22 @@ public class Fenetre extends JFrame  {
 		double result = e.eval();
 		String resulte;
 		if(mode=='D'){
-			resulte = dectoHex((int)result);
+			System.out.println(Integer.valueOf(str));
+			resulte = dectoHex(Integer.valueOf(str));
 		}
 		else if (mode=='O'){
-			resulte = Integer.toString((int)result);
-			resulte = OctToHex(resulte);
+			//resulte = Integer.toString((int)result);
+			resulte = OctToHex(str);
 		}
 		else if (mode=='B'){
-			resulte = Integer.toString((int)result);
-			resulte = bintoHex(resulte);
+			//resulte = Integer.toString((int)result);
+			resulte = bintoHex(str);
 		}
 		else {
-			resulte = Integer.toString((int)result);
+			resulte = str;
 		}*/
 		mode = 'H';
-		System.out.println(mode);
+		System.out.println("Mode hexadecimal activé");
 		//Ecran.setText(resulte);
 		upd = true;
 		}
