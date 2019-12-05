@@ -187,6 +187,7 @@ public class Fenetre extends JFrame  {
 		public void actionPerformed(ActionEvent arg0){
 			String str = ((JButton)arg0.getSource()).getText();
 			Ecran.setText(Ecran.getText()+str);
+			upd=false;
 		}
 	}
 
@@ -240,24 +241,28 @@ public class Fenetre extends JFrame  {
 	class MoinsListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
 			Ecran.setText(Ecran.getText()+"-");
+			upd=false;
 		}
 	}
 
 	class PlusListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
 			Ecran.setText(Ecran.getText()+"+");
+			upd=false;
 		}
 	}
 
 	class DivListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
 			Ecran.setText(Ecran.getText()+"/");
+			upd=false;
 		}
 	}
 
 	class MulListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
 			Ecran.setText(Ecran.getText()+"*");
+			upd=false;
 		}
 	}
 
@@ -265,6 +270,7 @@ public class Fenetre extends JFrame  {
 		public void actionPerformed(ActionEvent arg0){
 			mode = 'D';
 			Ecran.setText("");
+			upd=false;
 		}
 	}
 
@@ -273,122 +279,142 @@ public class Fenetre extends JFrame  {
 
 	class DecimalListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
-		//String str = Ecran.getText();
+		String str = Ecran.getText();
 		//int r = 0;
-		//String resulte="";
-		/*if(mode=='H'){
-			r = hextoDec(str);
-			resulte = Integer.toString(r);
-		}
-		else {
-		EXPR e = PARSER.parse_on(str);
-		double result = e.eval();
-		if(mode=='B'){
-			resulte = Integer.toString((int)result);
-			resulte = Integer.toString(bintoDec(resulte));
-		}
-		else if (mode=='O'){
-			resulte = Integer.toString((int)result);
-			resulte = Integer.toString(OcttoDec(resulte));
-	
-		}
-		else if (mode=='D'){
-			resulte = Double.toString(result);
+		String resulte="";
+		if(upd==true){
+			if(mode=='H'){
+				resulte = Integer.toString(hextoDec(str));
 			}
-		}*/
+				//EXPR e = PARSER.parse_on(str);
+				//double result = e.eval();
+			else if(mode=='B'){
+				//resulte = Integer.toString((int)result);
+				resulte = Integer.toString(bintoDec(str));
+			}
+			else if (mode=='O'){
+				//resulte = Integer.toString((int)result);
+				resulte = Integer.toString(OcttoDec(str));
+			}
+			else if (mode=='D'){
+				resulte = str;
+			}
+		}
 		mode = 'D';
 		System.out.println("Mode decimal activé");
-		//Ecran.setText(resulte);
+		Ecran.setText(resulte);
 		upd = true;
+		
 		}
 	}
+	
 
 	class BinaireListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
-		/*String str = Ecran.getText();
+		String str = Ecran.getText();
 		//On reconvertit ce que l'on a reçu en base 10 pour que le parser ne sois pas perdu 
 		String resulte="";
 		int r=0;
-		if(mode=='H'){
-			r = hextoDec(str);
-			resulte = dectoBin(r);
-		}
-		else {
-		EXPR e = PARSER.parse_on(str);
-		double result = e.eval();
-		if(mode=='D'){
+		if(upd==true){
+			if(mode=='H'){
+				resulte = dectoBin(hextoDec(str));
+			}
+			else if(mode=='D') {
+		//EXPR e = PARSER.parse_on(str);
+		//double result = e.eval();
 			//resulte = Integer.toString((int)result);
-			resulte = dectoBin((int)result);
-		}
-		else if (mode=='O'){
-			resulte = Integer.toString((int)result);
-			resulte = OctoBin(resulte);
-		}
-		else if (mode=='B'){
-			resulte = Integer.toString((int)result);
+				/*r = Integer.valueOf(str);
+				System.out.println(r);
+				resulte = dectoBin(r);
+				System.out.println(resulte);*/
+				/*r = dectoBin();
+				resulte = dectoBin(r);
+				System.out.println(Integer.valueOf(str));**/
+       		double r_d = Double.valueOf(str);
+        	int r_int = (int) r_d;
+        	resulte = dectoBin(r_int);
+
+			}
+			else if (mode=='O'){
+			//resulte = Integer.toString((int)result);
+				resulte = OctoBin(str);
+			}
+			else if (mode=='B'){
+			//resulte = Integer.toString((int)result);
+				resulte = str;
 			}	
-		}*/
+		}
 		mode = 'B';
 		System.out.println("Mode binaire activé");
-		//Ecran.setText(resulte);
+		Ecran.setText(resulte);
 		upd = true;
+		
 		}
+		
+		
 	}
 
 	class OctalListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
-		/*String str = Ecran.getText();
+		String str = Ecran.getText();
 		int r = 0;
 		String resulte="";
-		if(mode=='H'){
-			r = hextoDec(str);
-			resulte = decToOct(r);
-		}
-		else {
-			EXPR e = PARSER.parse_on(str);
-			double result = e.eval();
-			if(mode=='D'){
-				resulte = decToOct((int)result);
+		if(upd==true){
+			if(mode=='H'){
+				r = hextoDec(str);
+				resulte = decToOct(r);
+			}
+			else if(mode=='D'){
+			//EXPR e = PARSER.parse_on(str);
+			//double result = e.eval();
+				double r_d = Double.valueOf(str);
+        		int r_int = (int) r_d;
+        		resulte = decToOct(r_int);
 			}
 			else if (mode=='B'){
-				resulte = Integer.toString((int)result);
-				resulte = binToOct(resulte);
+				//resulte = Integer.toString((int)result);
+				resulte = binToOct(str);
 			}
 			else if(mode=='O'){
-				 resulte = Integer.toString((int)result);
+				 //resulte = Integer.toString((int)result);
+				 resulte = str;
 			}
-		}*/
+		}
 		mode = 'O';
 		System.out.println("Mode octal activé");
-		//Ecran.setText(resulte);
+		Ecran.setText(resulte);
 		upd = true;
 		}
 	}
 	
 	class HexaListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0){
-		/*String str = Ecran.getText();
-		EXPR e = PARSER.parse_on(str);
-		double result = e.eval();
-		String resulte;
-		if(mode=='D'){
-			System.out.println(Integer.valueOf(str));
-			resulte = dectoHex(Integer.valueOf(str));
-		}
-		else if (mode=='O'){
+		String str = Ecran.getText();
+		//EXPR e = PARSER.parse_on(str);
+		//double result = e.eval();
+		String resulte="";
+		if(upd==true){
+			if(mode=='D'){
+				//System.out.println(Integer.valueOf(str));
+				double r_d = Double.valueOf(str);
+        		int r_int = (int) r_d;
+        		resulte = dectoHex(r_int);
+			}
+			else if (mode=='O'){
 			//resulte = Integer.toString((int)result);
-			resulte = OctToHex(str);
-		}
-		else if (mode=='B'){
+				resulte = OctToHex(str);
+			}
+			else if (mode=='B'){
 			//resulte = Integer.toString((int)result);
-			resulte = bintoHex(str);
+				resulte = bintoHex(str);
+			}
+			else {
+				resulte = str;
+			}
 		}
-		else {
-			resulte = str;
-		}*/
 		mode = 'H';
 		System.out.println("Mode hexadecimal activé");
-		//Ecran.setText(resulte);
+		Ecran.setText(resulte);
 		upd = true;
 		}
 	}

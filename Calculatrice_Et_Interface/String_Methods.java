@@ -517,6 +517,15 @@ public class String_Methods {
         resulte = dectoHex((int)result);	
         System.out.println(resulte);
 
+        System.out.println("suite------------------------------------------------------------suite");
+        double r = 2.0;
+        String r_string = String.valueOf(r);
+        System.out.println(r_string);
+        double r_d = Double.valueOf(r_string);
+        System.out.println(r_d);
+        int r_int = (int) r_d;
+        System.out.println(r_int);
+
 
     }
 }
