@@ -1,5 +1,4 @@
-abstract  class EXPR_BINARY extends EXPR{
+abstract  class EXPR_BINARY extends EXPR {
 		protected EXPR left;
-		protected EXPR right;
-		
+		protected EXPR right;		
 }

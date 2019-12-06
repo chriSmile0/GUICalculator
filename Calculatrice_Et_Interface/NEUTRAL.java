@@ -6,5 +6,4 @@ class NEUTRAL extends EXPR_UNARY {
     {
         return  value.eval();
     }
-    
 }

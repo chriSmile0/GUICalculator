@@ -5,5 +5,4 @@ public class CALC {
 		e = PARSER.parse_on(args[0]);
 		System.out.println("Result : "+e.eval());
 	}
-
 }

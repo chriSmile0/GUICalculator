@@ -4,6 +4,6 @@ class NEG extends EXPR_UNARY {
     }
     double eval()
     {
-        return (-1)*(value.eval());
+        return (-1) * (value.eval());
     }
 }
