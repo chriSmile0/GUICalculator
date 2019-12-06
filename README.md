@@ -1,6 +1,6 @@
 
 
-
+							Rapport du Projet : Calculatrice Graphique
 
 1ere étape : Avoir une interface avec affichage des chiffres sur l'ecran 
 Avec Clean de l'ecran inclut et affichage du resultat
@@ -23,7 +23,7 @@ Load://############################ 100% #######################//
 Load://############################ 100% #######################//
 
 7eme étape : Passer de l'octal en binaire et hexa en binaire et le tout en decimal
-Load://########################### 0% #########################//
+Load://########################### 100% #########################//
 On pouvait le faire avant mais maintenant il faut modifier le code et faire des conditions car il va falloir traduire
 le code sur l'ecran qui est déja affiché pour pouvoir ou sinon etre sur qu'il  a un resultat avec 'upd' qui es a true pour pouvoir 
 modifier le contenu de l'ecran 

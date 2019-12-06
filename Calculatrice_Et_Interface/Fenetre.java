@@ -32,64 +32,124 @@ public class Fenetre extends JFrame  {
 
 	public static int bintoDec(String bin)
 	{
-        return Integer.parseInt(bin,2);
+		try {
+			return Integer.parseInt(bin,2);
+		}
+		catch(Exception e){
+			return 0;
+		}
     }
 
-	public  String bintoHex(String bin)
+	public String bintoHex(String bin)
 	{
-        return Integer.toHexString(bintoDec(bin));
+		try {
+		return Integer.toHexString(bintoDec(bin));
+		}
+		catch(Exception e){
+			return "Only Binary";
+		}
     }
 
 	public  String binToOct(String bin)
 	{
-        return decToOct(bintoDec(bin));
+		try {
+			return decToOct(bintoDec(bin));
+		}
+		catch(Exception e){
+			return "Only Binary";
+		}
     }
 
 	public String dectoBin(int nb)
 	{
+		try {
         String str = Integer.toBinaryString(nb);
-        return str;
+		return str;
+		}
+		catch(Exception e){
+			return "Only Decimal";
+		}
     }
 
 	public String decToOct(int dec)
 	{
-        return Integer.toOctalString(dec);
+		try {
+		return Integer.toOctalString(dec);
+		}
+		catch(Exception e){
+			return "Only Decimal";
+		}
     }
 
 	public String dectoHex(int dec)
 	{
-        return Integer.toHexString(dec);
+		try {
+		return Integer.toHexString(dec);
+		}
+		catch(Exception e){
+			return "Only decimal";
+		}
     }
 
 	public String OctoBin(String Oct)
 	{
-        return dectoBin(Integer.parseInt(Oct,8));
+		try {
+		return dectoBin(Integer.parseInt(Oct,8));
+		}
+		catch(Exception e){
+			return "Only Octal";
+		}
     }
 
 	public static int OcttoDec(String oct)
 	{
-        return Integer.parseInt(oct,8);
+		try {
+		return Integer.parseInt(oct,8);
+		}
+		catch(Exception e){
+			return 0;
+		}
     }
 
 	public  String OctToHex(String Oct)
 	{
-        return dectoHex(OcttoDec(Oct));
+		try {
+		return dectoHex(OcttoDec(Oct));
+		}
+		catch(Exception e){
+			return "Only Octal";
+		}
     }
 
 	public  String hexToOct(String hex)
 	{
-        return decToOct(hextoDec(hex));
+		try {
+		return decToOct(hextoDec(hex));
+		}
+		catch(Exception e){
+			return "Only Hexa";
+		}
     }
 
 	public static int hextoDec(String hex)
 	{
+		try {
 		return Integer.parseInt(hex,16);
+		}
+		catch(Exception e){
+			return 0;
+		}
 	}
 
 	public  String hexToBin(String hex)
 	{
+		try {
         int nb = Integer.parseInt(hex,16);
-        return dectoBin(nb);
+		return dectoBin(nb);
+		}
+		catch(Exception e){
+			return "Only Hexa";
+		}
 	}
 	
 	private void creationElements()
@@ -406,8 +466,9 @@ public class Fenetre extends JFrame  {
             index_op = sub_str.indexOf(op)+1;
             taille_du_binaire = index_op-1;
             if (taille_du_binaire != 0) {
-                b = bintoDec(sub_str.substring(0,taille_du_binaire));
-                //Si la sous chaine n'est pas du binaire alors celà lancera l'erreur , voir pour mettre un try and catch 
+				b = bintoDec(sub_str.substring(0,taille_du_binaire));
+				if (b == 0) System.out.println("Only Binary");
+                //Si la sous chaine n'est pas du binaire alors celà lancera l'erreur 
                 Chaine_Convertit = Chaine_Convertit.concat(Integer.toString(b)+op);
                 sub_str = sub_str.substring(index_op);
             }
@@ -419,7 +480,8 @@ public class Fenetre extends JFrame  {
         }
         if (op_str == i) {
             taille_du_binaire = sub_str.length();
-            b = bintoDec(sub_str.substring(0,taille_du_binaire));
+			b = bintoDec(sub_str.substring(0,taille_du_binaire));
+			if (b == 0) System.out.println("Only Binary");
             Chaine_Convertit = Chaine_Convertit.concat(Integer.toString(b));
         }
         return Chaine_Convertit;
@@ -441,8 +503,9 @@ public class Fenetre extends JFrame  {
             index_op = sub_str.indexOf(op)+1;
             taille_de_Loctal = index_op-1;
             if (taille_de_Loctal != 0) {
-                b = OcttoDec(sub_str.substring(0,taille_de_Loctal));
-                //Si la sous chaine n'est pas du binaire alors celà lancera l'erreur , voir pour mettre un try and catch 
+				b = OcttoDec(sub_str.substring(0,taille_de_Loctal));
+				if (b == 0) System.out.println("Only Octal");
+                //Si la sous chaine n'est pas du binaire alors celà lancera l'erreur 
                 Chaine_Convertit = Chaine_Convertit.concat(Integer.toString(b)+op);
                 sub_str = sub_str.substring(index_op);
             }
@@ -454,7 +517,8 @@ public class Fenetre extends JFrame  {
         }
         if(op_str == i){
             taille_de_Loctal = sub_str.length();
-            b = OcttoDec(sub_str.substring(0,taille_de_Loctal));
+			b = OcttoDec(sub_str.substring(0,taille_de_Loctal));
+			if (b == 0) System.out.println("Only Octal");
             Chaine_Convertit = Chaine_Convertit.concat(Integer.toString(b));
         }
         return Chaine_Convertit;
@@ -477,7 +541,8 @@ public class Fenetre extends JFrame  {
             taille_de_Lhexa = index_op-1;
             if (taille_de_Lhexa != 0) {
 				b = hextoDec(sub_str.substring(0,taille_de_Lhexa));
-				 //Si la sous chaine n'est pas du binaire alors celà lancera l'erreur , voir pour mettre un try and catch 
+				if (b == 0) System.out.println("Hexa Only");
+				 //Si la sous chaine n'est pas du binaire alors celà lancera l'erreur
                 Chaine_Convertit = Chaine_Convertit.concat(Integer.toString(b)+op);
                 sub_str = sub_str.substring(index_op);
             }
