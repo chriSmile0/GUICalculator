@@ -334,7 +334,7 @@ public class Fenetre extends JFrame  {
 			if (upd == true) {
 				if (mode == 'H') 
 					resulte = Double.toString(hextoDec(str));
-				else if(mode == 'B')
+				else if (mode == 'B')
 					resulte = Double.toString(bintoDec(str));
 				else if (mode == 'O')
 					resulte = Double.toString(OcttoDec(str));
@@ -355,16 +355,16 @@ public class Fenetre extends JFrame  {
 			String str = Ecran.getText();
 			String resulte = "";
 			if (upd == true) {
-				if(mode=='H')
+				if (mode == 'H')
 					resulte = dectoBin(hextoDec(str));
-				else if(mode=='D') {
+				else if (mode == 'D') {
        				double r_d = Double.valueOf(str);
         			int r_int = (int) r_d;
         			resulte = dectoBin(r_int);
 				}
-				else if (mode=='O')
+				else if (mode == 'O')
 					resulte = OctoBin(str);
-				else if (mode=='B')
+				else if (mode == 'B')
 					resulte = str;
 			}
 			mode = 'B';
@@ -389,7 +389,7 @@ public class Fenetre extends JFrame  {
 				}
 				else if (mode == 'B')
 					resulte = binToOct(str);
-				else if(mode == 'O')
+				else if (mode == 'O')
 				    resulte = str;
 			}
 			mode = 'O';
@@ -515,7 +515,7 @@ public class Fenetre extends JFrame  {
             }
             i++;
         }
-        if(op_str == i){
+        if (op_str == i){
             taille_de_Loctal = sub_str.length();
 			b = OcttoDec(sub_str.substring(0,taille_de_Loctal));
 			if (b == 0) System.out.println("Only Octal");
