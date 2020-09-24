@@ -28,7 +28,7 @@ class PARSER {
         
         String str_sub = src.substring(idx_dep,idx);
         if (str_sub.length() > 0) {
-            last_cst = Double.valueOf(str_sub);
+            last_cst = Integer.valueOf(str_sub);
             return true;
         }
         else return false;
